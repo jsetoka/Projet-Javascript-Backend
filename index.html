@@ -155,8 +155,8 @@
             "Content-Type": "application/json",
           },
           data: JSON.stringify(vehicule),
-          success: function () {
-            $("#message").text("✅ Véhicule ajouté avec succès !");
+          success: function (reponse) {
+            $("#message").text("✅ Véhicule ajouté avec succès !" + reponse.vehicule_id);
             $("#add-vehicule")[0].reset();
           },
           error: function (xhr) {
