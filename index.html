@@ -3,88 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Authentification JWT + Véhicules</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f4f7f9;
-        padding: 30px;
-        margin: 0;
-        color: #333;
-      }
-
-      .flex-row {
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 500px;
-        background: #fff;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #0077cc;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 20px;
-      }
-
-      input[type="text"],
-      input[type="password"],
-      textarea {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-      }
-
-      textarea {
-        resize: vertical;
-        font-family: monospace;
-      }
-
-      button {
-        padding: 10px 15px;
-        border: none;
-        border-radius: 6px;
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: #0056b3;
-      }
-
-      ul {
-        padding-left: 20px;
-      }
-
-      #message {
-        margin-top: 15px;
-        font-weight: bold;
-        color: green;
-      }
-
-      label {
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="flex-row">
@@ -107,11 +26,11 @@
         <div class="tokens">
           <div>
             <label for="access_token">Access token :</label>
-            <textarea id="access_token" rows="4" cols="80" readonly></textarea>
+            <textarea id="access_token" rows="5" cols="50" readonly></textarea>
           </div>
           <div style="margin-top: 15px">
             <label for="refresh_token">Refresh token :</label>
-            <textarea id="refresh_token" rows="4" cols="80" readonly></textarea>
+            <textarea id="refresh_token" rows="5" cols="50" readonly></textarea>
           </div>
         </div>
 
@@ -150,7 +69,7 @@
         e.preventDefault();
         const username = $('[name="username"]').val();
         const password = $('[name="password"]').val();
-
+        console.log(username);
         $.ajax({
           url: "http://127.0.0.1:8000/api_login/",
           type: "POST",
@@ -203,7 +122,7 @@
           success: function (reponse) {
             $("#liste-vehicules").empty();
             reponse.forEach(function (v) {
-              const item = `<li>${v.marque} - ${v.modele} (${v.immatriculation})</li>`;
+              const item = `<li>${v.id} - ${v.marque} - ${v.modele} (${v.immatriculation})</li>`;
               $("#liste-vehicules").append(item);
             });
             $("#message").text("🚗 Liste des véhicules chargée !");

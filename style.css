@@ -73,3 +73,18 @@ ul {
 ul li {
   margin-bottom: 6px;
 }
+.flex-row {
+  display: flex;
+  gap: 40px; /* espace entre les colonnes */
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap; /* utile pour petits écrans */
+}
+
+.container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #f9f9f9;
+}
